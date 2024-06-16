@@ -1,24 +1,16 @@
 import java.util.*;
 
+
 class Problem1 {
-
-  public String clearDigits(String s) {
-
-    Deque<Character> stack = new LinkedList<>();
-    for (var ch : s.toCharArray()) {
-      if (Character.isDigit(ch)) {
-        if (!stack.isEmpty()) {
-          stack.pop();
+  public int countCompleteDayPairs(int[] A) {
+    int count = 0;
+    for(int i = 0; i < A.length; i++){
+      for(int j = i+1; j< A.length; j++){
+        if((A[i] + A[j]) % 24 == 0){
+          count++;
         }
-      } else {
-        stack.push(ch);
       }
     }
-
-    StringBuilder sb = new StringBuilder();
-    for (var item : stack) {
-      sb.append(item);
-    }
-    return sb.reverse().toString();
+    return count;
   }
 }
